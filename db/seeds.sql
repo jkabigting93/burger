@@ -11,4 +11,6 @@ INSERT INTO burgers (burger_name, devoured)
 VALUES ("Filet of Shrimp", true);
 
 INSERT INTO burgers (burger_name, devoured)
-VALUES ("4 Guys");
+VALUES ("4 Guys", false);
+
+SELECT * FROM burgers
