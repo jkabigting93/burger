@@ -1,4 +1,4 @@
-var express = require("express")
+var express = require("express");
 var app = express();
 
 var port = process.env.PORT || 5000;
@@ -12,8 +12,11 @@ app.set("view engine", "handlebars");
 
 var routes = require("./controllers/burgers_controller.js");
 
+app.set("port", port);
 app.use("/", routes);
 
 app.listen(PORT, function() {
   console.log("App now listening at localhost:" + PORT);
 });
+
+module.exports = app;
