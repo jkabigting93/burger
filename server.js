@@ -6,6 +6,9 @@ var PORT = process.env.PORT || 5000;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
+var favicon = require("serve-favicon");
+app.use(favicon(path.join(__dirname, "favicon.ico")));
+
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({
   defaultLayout: "main",
