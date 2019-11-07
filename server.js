@@ -7,9 +7,9 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 app.use(express.static(process.cwd() + '/public'));
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-app.use(express.json());
+app.use(bodyParser.json());
 
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
