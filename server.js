@@ -7,7 +7,11 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 var exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({
+  defaultLayout: "main",
+  layoutsDir: __dirname + "/views/layouts/"
+  })
+);
 app.set("view engine", "handlebars");
 
 var routes = require("./controllers/burgers_controller.js");
