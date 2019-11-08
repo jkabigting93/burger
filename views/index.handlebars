@@ -7,8 +7,8 @@
         {{#each burgers}}
           {{#unless this.devoured}}
             <div>
-              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
-                <button type="submit" class='burgerAvailable'> {{this.burger_name}}</button>
+              <form action="/burgers/update?" method="PUT">
+                <button type="submit" class="burgerAvailable">{{this.burger_name}}</button>
               </form>
             </div>
           {{/unless}}
@@ -34,7 +34,7 @@
 
 <div class="row">
   <div class="col s12">
-    <form class="create-form">
+    <form class="create-form" action="/burgers/create" method="POST">
       <input type="text" id="name" name="burger_name" placeholder="Burger">
       <button type="submit" class="addBurgerButton">Insert</button>
     </form>
