@@ -9,13 +9,14 @@ router.get("/", function(req, res) {
       burgers: data
     };
     console.log(hbsObject);
-    res.render("index", hbsObject);
+    res.render("./index", hbsObject);
   });
 });
 
 router.post("/", function(req, res) {
   burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
-    res.json({ id: result.insertID })
+    res.json({ id: result.insertID });
+    res.redirect("/");
   });
 });
 
@@ -29,6 +30,7 @@ router.put("/:id", function(req, res) {
       return res.status(404).end();
     } else {
       res.status(200).end();
+      res.redirect("/");
     }}
   )}
 );
