@@ -13,26 +13,17 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/", function(req, res) {
-  burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
-    res.json({ id: result.insertID });
-    res.redirect("/");
+router.post("/burgers/insertOne", function (req, res) {
+  burger.insertOne(req.body.burger_name, function (result) {
+      console.log(result);
   });
 });
 
-router.put("/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-  console.log("condition", condition);
-  burger.updateOne({
-    devoured: req.body.devoured
-  }, condition, function(result) {
-    if (result.changedRows == 0) {
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
+router.put("/burgers/updateOne", function (req, res) {
+  burger.updateOne(req.body.burger_id, function (result) {
       res.redirect("/");
-    }}
-  )}
-);
+    }
+  )
+});
 
 module.exports = router;
